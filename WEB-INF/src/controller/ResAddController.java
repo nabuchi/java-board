@@ -18,11 +18,13 @@ public class ResAddController {
 	public static String perform(
 			HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
+
 		String nextPage = "/WEB-INF/jsp/Error.jsp";
+		request.setCharacterEncoding("utf8");
+
 		String author = request.getParameter("author");
 		String content = request.getParameter("content");
 		
-		request.setCharacterEncoding("utf8");
 		if( author == null || content == null ) {
 			request.setAttribute("error", "書き込みに失敗しました"); 
 		} else if( content.equals("")){
@@ -36,9 +38,11 @@ public class ResAddController {
 				res = resdao.insert(res);
 				if(res != null) {
 					request.setAttribute("res", res);
+                    nextPage = "/WEB-INF/jsp/MainBoard.jsp";
 				} else {
 					request.setAttribute("error", "書き込みに失敗しました");
 				}
+			    request.setAttribute("error", "らりるれろ"); 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
