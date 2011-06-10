@@ -4,12 +4,10 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
 import bean.Res;
-
 import dao.ResDAO;
 import dm.ConnectionManager;
 
@@ -38,7 +36,8 @@ public class ResAddController {
 				res = resdao.insert(res);
 				if(res != null) {
 					request.setAttribute("res", res);
-                    nextPage = "/WEB-INF/jsp/MainBoard.jsp";
+                    nextPage = ResListController.perform(request, response);
+
 				} else {
 					request.setAttribute("error", "書き込みに失敗しました");
 				}
