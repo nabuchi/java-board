@@ -8,6 +8,7 @@ task :default => "make"
 rule '.class' => ['.java'] do |t|
     sh "javac #{t.source}"
     FileUtils.copy( t.name, File.join( CLASSDIR, t.name) )
+    puts "deployed #{t.name} to #{File.join(CLASSDIR, t.name)}"
 end
 
 file "make" => OBJS do |t|

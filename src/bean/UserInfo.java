@@ -14,7 +14,7 @@ public class UserInfo implements Serializable {
     public UserInfo(
             String name,
             String password,
-            String sequretQuestion,
+            String securetQuestion,
             String secretQuestionAnswer) {
         this.name = name;
         this.password = password;
@@ -22,6 +22,20 @@ public class UserInfo implements Serializable {
         this.secretQuestionAnswer = secretQuestionAnswer;
         this.id = -1;
     }
+
+    public UserInfo(
+            int id,
+            String name,
+            String password,
+            String securetQuestion,
+            String secretQuestionAnswer) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.secretQuestion = secretQuestion;
+        this.secretQuestionAnswer = secretQuestionAnswer;
+    }
+
 
 	public int getId() { return id; }
 	public void setId(int id) { this.id = id; }

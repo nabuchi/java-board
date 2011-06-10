@@ -14,14 +14,20 @@ public class ResDAO {
 	public Res insert(Res r) throws SQLException {
         Integer id = r.getId();
         String time = r.getTime();
+        Integer userid = r.getUserid();
+
         String idcontext = (id==-1 ? "NULL" : id.toString());
-        String timecontext = (time==null ? "now()" : time);
+        String timecontext = (time==null ? "now()" : "'"+time+"'");
+        int useridcontext = (userid==-1 ? 1 : userid);
 
 		String sql = "insert into res values("
 					+ idcontext + ",'"
                     + r.getAuthor() + "','"
 					+ r.getContent() + "',"
-					+ timecontext + ")";
+					+ timecontext + ","
+                    + useridcontext + ","
+                    + r.getThreadid() + ")";
+        System.out.println(sql);
 		Statement stmt = con.createStatement();
 		int cnt = stmt.executeUpdate(sql);
 		if (cnt != 0) {

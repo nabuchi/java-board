@@ -3,21 +3,22 @@ create table javaboard.res(
     id int auto_increment not null primary key, 
     author tinytext not null,
     content text not null,
-    time datetime not null,
-    userid int not null
+    time timestamp not null default current_timestamp,
+    userid int not null,
+    topicid int not null
 );
-drop table javaboard.thread;
-create table javaboard.thread(
+drop table javaboard.topic;
+create table javaboard.topic(
     id int auto_increment not null primary key,
     title text not null,
-    created_date datetime not null,
+    created_date timestamp not null default current_timestamp,
     userid int not null
 );
 drop table javaboard.userinfo;
 create table javaboard.userinfo(
     id int auto_increment not null primary key,
     name varchar(255) unique not null,
-    password tinytext not null,
-    secret_question tinytext not null,
-    secret_question_answer tinytext not null
+    password tinytext,
+    secret_question tinytext,
+    secret_question_answer tinytext
 );

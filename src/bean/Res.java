@@ -7,6 +7,8 @@ public class Res implements Serializable {
     private String author;
     private String content;
     private String time;
+    private int userid;
+    private int threadid;
 
     public Res() {}
 
@@ -32,4 +34,8 @@ public class Res implements Serializable {
     public void setContent(String content) { this.content = content; }
     public String getTime() { return time; }
     public void setTime() { this.time = time; }
+    public int getUserid() { return userid; }
+    public void setUserid() { this.userid = userid; }
+    public int getThreadid() { return threadid; }
+    public void setThreadid() { this.threadid = threadid; }
 }

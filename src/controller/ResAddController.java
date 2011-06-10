@@ -33,15 +33,17 @@ public class ResAddController {
 				con = dm.ConnectionManager.getConnection();
 				ResDAO resdao = new ResDAO(con);
 				Res res = new Res(author, content);
+				request.setAttribute("error", "koko?");
 				res = resdao.insert(res);
+				request.setAttribute("error", "aiu?");
 				if(res != null) {
 					request.setAttribute("res", res);
+					request.setAttribute("error", "ここ？");
                     nextPage = ResListController.perform(request, response);
 
 				} else {
 					request.setAttribute("error", "書き込みに失敗しました");
 				}
-			    request.setAttribute("error", "らりるれろ"); 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
