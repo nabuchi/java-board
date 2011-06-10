@@ -13,7 +13,7 @@ public class BoardController extends HttpServlet {
         String nextPage = null;
 
         if( "/MainBoard".equals(path) ) {
-            nextPage = "/WEB-INF/jsp/MainBoard.jsp";
+            nextPage = ResListController.perform(request, response);
         } else if( "/ResAddAction".equals(path) ) {
             nextPage = ResAddController.perform(request, response);
         } else {

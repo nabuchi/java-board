@@ -1,13 +1,31 @@
 SRCS = FileList["**/*.java"]
 OBJS = SRCS.ext('class')
+CLASSDIR = "../webapps/WEB-INF/classes"
+require 'fileutils'
 
-desc "default"
 task :default => "make"
 
-task :make => OBJS do |t|
-    sh "javac #{t.prerequisites.join(' ')}"
+rule '.class' => ['.java'] do |t|
+    sh "javac #{t.source}"
+    FileUtils.copy( t.name, File.join( CLASSDIR, t.name) )
 end
 
-rule '.class' => '.java' do |t|
-    sh "javac #{t.source}"
+file "make" => OBJS do |t|
+    sh "javac Main.java"
+end
+
+task :clean do
+    Dir.glob('./**/*').each do |file|
+        next if file !~ /\.class$/
+        puts "delete #{file}"
+        FileUtils.rm(file)
+    end
+end
+
+task :deploy do
+    Dir.glob('./**/*').each do |file|
+        next if file !~ /\.class$/
+        puts "deployed #{file} to #{File.join(CLASSDIR, file)}"
+        FileUtils.copy( file, File.join(CLASSDIR, file) )
+    end
 end
