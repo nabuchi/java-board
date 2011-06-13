@@ -8,7 +8,7 @@ public class Res implements Serializable {
     private String content;
     private String time;
     private int userid;
-    private int threadid;
+    private int topicid;
 
     public Res() {}
 
@@ -19,11 +19,13 @@ public class Res implements Serializable {
         this.time = null;
     }
 
-    public Res(int id, String author, String content, String time) {
+    public Res(int id, String author, String content, String time, int userid, int topicid) {
         this.author = author;
         this.content = content;
         this.id = id;
         this.time = time;
+        this.userid = userid;
+        this.topicid = topicid;
     }
 
     public int getId() { return id; }
@@ -36,6 +38,6 @@ public class Res implements Serializable {
     public void setTime() { this.time = time; }
     public int getUserid() { return userid; }
     public void setUserid() { this.userid = userid; }
-    public int getThreadid() { return threadid; }
-    public void setThreadid() { this.threadid = threadid; }
+    public int getTopicid() { return topicid; }
+    public void setTopicid() { this.topicid = topicid; }
 }

@@ -13,9 +13,15 @@ public class BoardController extends HttpServlet {
         String nextPage = null;
 
         if( "/MainBoard".equals(path) ) {
-            nextPage = ResListController.perform(request, response);
+            nextPage = TopicListController.perform(request, response);
         } else if( "/ResAddAction".equals(path) ) {
             nextPage = ResAddController.perform(request, response);
+        } else if( "/TopicAddAction".equals(path) ) {
+            nextPage = TopicAddController.perform(request, response);
+        } else if( "/MakeTopic".equals(path) ) {
+            nextPage = "/WEB-INF/jsp/MakeTopic.jsp";
+        } else if( "/ModifyData".equals(path) {
+            nextPage = "/WEB-INF/jsp/ModifyData.jsp";
         } else {
             request.setAttribute("error", "指定されたURLに誤りがあります");
             nextPage = "/WEB-INF/jsp/Error.jsp";

@@ -35,4 +35,15 @@ public class TopicDAO {
 		}
 		return list;
 	}
+    public ArrayList<Integer> selectAllId() throws SQLException {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		String sql = "select id from topic";
+		Statement stmt = con.createStatement();
+		ResultSet rset = stmt.executeQuery(sql);
+		while (rset.next()) {
+            Integer i = rset.getInt(1);
+            list.add(i);
+        }
+        return list;
+    }
 }
