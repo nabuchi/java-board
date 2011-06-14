@@ -12,10 +12,12 @@ public class Res implements Serializable {
 
     public Res() {}
 
-    public Res(String author, String content) {
+    public Res(String author, String content, int topicid) {
         this.author = author;
         this.content = content;
+        this.topicid = topicid;
         this.id = -1;
+        this.userid = -1;
         this.time = null;
     }
 

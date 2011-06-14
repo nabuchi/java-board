@@ -40,4 +40,19 @@ public class UserInfoDAO {
 		return list;
 	}
 
+    public UserInfo selectByNamePass(String userId, String passwd) throws SQLException {
+        UserInfo user = null;
+        String sql = "select name, password, secret_question, secretQuestionAnswer from userinfo where name = ? and password = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1,userId);
+        ps.setString(2,passwd);
+        ResultSet rset = ps.executeQuery();
+        if( rset.next() ) {
+            user = new UserInfo(rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4) );
+        } else {
+            user = null;
+        }
+        return user;
+    }
+
 }

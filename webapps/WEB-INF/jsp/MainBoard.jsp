@@ -13,6 +13,7 @@
         <!-- 会員専用 -->
         <a href="app/MakeTopic">トピック作成</a>
         <a href="app/ModifyData">会員情報変更</a>
+        <a href="app/UserAddForm">ユーザー登録</a>
 
     <%--
     <form action="app/ResAddAction" method="post">

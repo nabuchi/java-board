@@ -14,13 +14,13 @@ public class Main {
 
             //ResDAOテスト
             ResDAO rdao = new ResDAO(con);
-            Res res = new Res("著者", "コメント");
+            Res res = new Res("著者", "コメント", 1);
             rdao.insert(res);
             ArrayList<Res> rlist = rdao.selectAll();
             Iterator<Res> iter = rlist.iterator();
             while(iter.hasNext()) {
                 res = iter.next();
-                System.out.printf("%s %s %s %s\n",res.getId(), res.getTime(), res.getAuthor(), res.getContent());
+                System.out.printf("%s %s %s %s %s\n",res.getId(), res.getTime(), res.getAuthor(), res.getContent(), res.getTopicid());
             }
 
             //TopicDAOテスト

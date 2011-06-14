@@ -14,7 +14,7 @@ public class UserInfo implements Serializable {
     public UserInfo(
             String name,
             String password,
-            String securetQuestion,
+            String secretQuestion,
             String secretQuestionAnswer) {
         this.name = name;
         this.password = password;
@@ -47,4 +47,8 @@ public class UserInfo implements Serializable {
 	public void setSecretQuestion(String secretQuestion) { this.secretQuestion = secretQuestion; }
 	public String getSecretQuestionAnswer() { return secretQuestionAnswer; }
 	public void setSecretQuestionAnswer(String secretQuestionAnswer) { this.secretQuestionAnswer = secretQuestionAnswer; }
+
+    public boolean checkPassword(String password) {
+        return password != null && password.equals(this.password);
+    }
 }

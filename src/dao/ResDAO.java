@@ -39,7 +39,7 @@ public class ResDAO {
 
 	public ArrayList<Res> selectAll() throws SQLException {
 		ArrayList<Res> list = new ArrayList<Res>();
-		String sql = "select id, author, content, time from res";
+		String sql = "select id, author, content, time, userid, topicid from res";
 		Statement stmt = con.createStatement();
 		ResultSet rset = stmt.executeQuery(sql);
 		while (rset.next()) {

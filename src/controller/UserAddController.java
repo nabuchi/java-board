@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import bean.Res;
-import dao.ResDAO;
+import bean.UserInfo;
+import dao.UserInfoDAO;
 import dm.ConnectionManager;
 
-public class ResAddController {
-	private ResAddController(){}
+public class UserAddController {
+	private UserAddController(){}
 	public static String perform(
 			HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
@@ -20,25 +20,26 @@ public class ResAddController {
 		String nextPage = "/WEB-INF/jsp/Error.jsp";
 		request.setCharacterEncoding("utf8");
 
-		String author = request.getParameter("author");
-		String content = request.getParameter("content");
-        String topicidstr = request.getParameter("topicid");
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+        String secretQuestion = request.getParameter("secret_question");
+        String secretQuestionAnswer = request.getParameter("secret_question_answer");
 		
-		if( author == null || content == null ) {
+		if( name == null ||
+            password == null ||
+            secretQuestion == null ||
+            secretQuestionAnswer == null) {
 			request.setAttribute("error", "書き込みに失敗しました"); 
-		} else if( content.equals("")){
-			request.setAttribute("error", "本文を入力してください"); 
 		} else {
 			Connection con = null;
 			try {
-                int topicid = Integer.parseInt(topicidstr);
 				con = dm.ConnectionManager.getConnection();
-				ResDAO resdao = new ResDAO(con);
-				Res res = new Res(author, content, topicid);
-				res = resdao.insert(res);
-				if(res != null) {
-					request.setAttribute("res", res);
-                    nextPage = ResListController.perform(request, response);
+				UserInfoDAO userdao = new UserInfoDAO(con);
+				UserInfo user = new UserInfo(name, password, secretQuestion, secretQuestionAnswer);
+				user = userdao.insert(user);
+				if(user != null) {
+					request.setAttribute("user", user);
+                    nextPage = "/WEB-INF/jsp/UserAddConfirm.jsp";
 				} else {
 					request.setAttribute("error", "書き込みに失敗しました");
 				}
