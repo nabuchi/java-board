@@ -4,6 +4,7 @@ import bean.*;
 import dao.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import mc.MCUserInfo;
 
 
 public class Main {
@@ -45,6 +46,8 @@ public class Main {
                 System.out.printf("%s %s %s %s\n",user.getId(), user.getName(), user.getSecretQuestion(), user.getSecretQuestionAnswer());
             }
 
+            //MCUserInfoのテスト
+            System.out.println(MCUserInfo.login("nabnab", "password"));
 
         } catch(SQLException e) {
             e.printStackTrace();

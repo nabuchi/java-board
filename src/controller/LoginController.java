@@ -10,15 +10,16 @@ public class LoginController{
 			HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
 		String nextPage = "/WEB-INF/jsp/Error.jsp";
-		String userId = request.getParameter("userId");
+		String userId = request.getParameter("userid");
 		String password = request.getParameter("password");
 		UserInfo user = MCUserInfo.login(userId, password);
 		if(user != null){
-			HttpSession session = request.getSession(true);
-			session.setAttribute("user", user);
+			HttpSession session = request.getSession(false);
+			session.setAttribute("user", user.getName());
+			session.setAttribute("loggedIn", true);
             nextPage = TopicListController.perform(request, response);
 		}else{
-			request.setAttribute("error", "ログインに失敗しました");
+			request.setAttribute("error", ""+userId+":"+password);
 		}
 		return nextPage;
 	}

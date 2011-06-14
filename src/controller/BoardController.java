@@ -11,6 +11,7 @@ public class BoardController extends HttpServlet {
 
         String path = request.getPathInfo();
         String nextPage = null;
+        HttpSession session = request.getSession(true);
 
         if( "/MainBoard".equals(path) ) {
             nextPage = TopicListController.perform(request, response);
@@ -21,7 +22,7 @@ public class BoardController extends HttpServlet {
         } else if( "/MakeTopic".equals(path) ) {
             nextPage = "/WEB-INF/jsp/MakeTopic.jsp";
         } else if( "/ModifyData".equals(path) ) {
-            nextPage = "/WEB-INF/jsp/ModifyData.jsp";
+            nextPage = UserModifyController.perform(request, response);
         } else if( "/ResListAction".equals(path) ) {
             nextPage = ResListController.perform(request, response);
         } else if("/LoginAction".equals(path)) {
@@ -32,6 +33,9 @@ public class BoardController extends HttpServlet {
             nextPage = "/WEB-INF/jsp/UserAddForm.jsp";
         } else if("/UserAddAction".equals(path)) {
             nextPage = UserAddController.perform(request, response);
+        } else if("/Logout".equals(path)) {
+            session.setAttribute("loggedIn", null);
+            nextPage = "/WEB-INF/jsp/Logout.jsp";
         } else {
             request.setAttribute("error", "指定されたURLに誤りがあります");
             nextPage = "/WEB-INF/jsp/Error.jsp";

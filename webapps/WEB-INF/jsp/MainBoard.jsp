@@ -9,11 +9,15 @@
     </head>
     <body>
         <h1>BBS</h1>
-        <a href="app/LoginForm">ログイン</a>
-        <!-- 会員専用 -->
+        <% if( session.getAttribute("loggedIn") != null ) { %>
+        <p>ようこそ<%= session.getAttribute("user") %>さん</p>
         <a href="app/MakeTopic">トピック作成</a>
         <a href="app/ModifyData">会員情報変更</a>
+        <a href="app/Logout">ログアウト</a>
+        <% } else { %>
+        <a href="app/LoginForm">ログイン</a>
         <a href="app/UserAddForm">ユーザー登録</a>
+        <% } %>
 
     <%--
     <form action="app/ResAddAction" method="post">

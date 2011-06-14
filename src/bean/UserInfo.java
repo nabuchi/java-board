@@ -1,25 +1,24 @@
 package bean;
 
 import java.io.*;
+import java.util.*;
+import java.text.DateFormat;
 
 public class UserInfo implements Serializable {
     private int id;
     private String name;
     private String password;
-    private String secretQuestion;
-    private String secretQuestionAnswer;
+    private String birthday;
 
     public UserInfo() {}
 
     public UserInfo(
             String name,
             String password,
-            String secretQuestion,
-            String secretQuestionAnswer) {
+            String birthday) {
         this.name = name;
         this.password = password;
-        this.secretQuestion = secretQuestion;
-        this.secretQuestionAnswer = secretQuestionAnswer;
+        this.birthday = birthday;
         this.id = -1;
     }
 
@@ -27,13 +26,11 @@ public class UserInfo implements Serializable {
             int id,
             String name,
             String password,
-            String securetQuestion,
-            String secretQuestionAnswer) {
+            String birthday) {
         this.id = id;
         this.name = name;
         this.password = password;
-        this.secretQuestion = secretQuestion;
-        this.secretQuestionAnswer = secretQuestionAnswer;
+        this.birthday = birthday;
     }
 
 
@@ -43,10 +40,8 @@ public class UserInfo implements Serializable {
 	public void setName(String name) { this.name = name; }
 	public String getPassword() { return password; }
 	public void setPassword(String password) { this.password = password; }
-	public String getSecretQuestion() { return secretQuestion; }
-	public void setSecretQuestion(String secretQuestion) { this.secretQuestion = secretQuestion; }
-	public String getSecretQuestionAnswer() { return secretQuestionAnswer; }
-	public void setSecretQuestionAnswer(String secretQuestionAnswer) { this.secretQuestionAnswer = secretQuestionAnswer; }
+	public String getBirthday() { return birthday; }
+	public void setBirthday(String birthday) { this.birthday = birthday; }
 
     public boolean checkPassword(String password) {
         return password != null && password.equals(this.password);

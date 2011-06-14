@@ -18,7 +18,6 @@ drop table javaboard.userinfo;
 create table javaboard.userinfo(
     id int auto_increment not null primary key,
     name varchar(255) unique not null,
-    password tinytext,
-    secret_question tinytext,
-    secret_question_answer tinytext
+    password tinytext not null,
+    birthday date not null
 );
