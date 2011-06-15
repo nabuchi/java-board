@@ -6,5 +6,6 @@
     </head>
     <body>
         <h1>ログアウトしました</h1>
+        <a href="app/MainBoard">トップへ戻る</a>
     </body>
 </html>

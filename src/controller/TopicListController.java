@@ -19,22 +19,6 @@ public class TopicListController {
         try {
             con = dm.ConnectionManager.getConnection();
             TopicDAO topicdao = new TopicDAO(con);
-            /*
-            HashMap<Topic> tlist = topicdao.selectAllByHash();
-            ArrayList<Res> rlist = Resdao.selectAll();
-            ArrayList<MCTopic> topiclist = new ArrayList<MCTopic>;
-            Iterator<Res> iter = reslist.iterator();
-            Res res = null;
-            MCTopic mctopic = null;
-            int currenttopicid = -1;
-            while(iter.hasNext() {
-                res = iter.next();
-                topicid = res.getTopicId();
-                if(currenttopicid != topicid) {
-                    mctopic = new MCTopic();
-                }
-            }
-            */
             ArrayList<Topic> topiclist = topicdao.selectAll();
 
             request.setAttribute("topiclist", topiclist);

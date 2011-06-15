@@ -15,7 +15,9 @@ public class LoginController{
 		UserInfo user = MCUserInfo.login(userId, password);
 		if(user != null){
 			HttpSession session = request.getSession(false);
+			session.setAttribute("id", user.getId());
 			session.setAttribute("user", user.getName());
+			session.setAttribute("birthday", user.getBirthday());
 			session.setAttribute("loggedIn", true);
             nextPage = TopicListController.perform(request, response);
 		}else{

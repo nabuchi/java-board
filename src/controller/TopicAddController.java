@@ -20,7 +20,9 @@ public class TopicAddController {
 		String nextPage = "/WEB-INF/jsp/Error.jsp";
 		request.setCharacterEncoding("utf8");
 
-		String userid = request.getParameter("userid");//後でセッションからとってくる
+        HttpSession session = request.getSession(false);
+
+		String userid = session.getAttribute("id").toString();
 		String title = request.getParameter("title");
 		
 		if( userid == null || title == null ) {

@@ -4,6 +4,7 @@ import bean.*;
 import dao.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.text.ParseException;
 import mc.MCUserInfo;
 
 
@@ -36,6 +37,7 @@ public class Main {
             }
 
             //UserInfoDAOテスト
+            /*
             UserInfoDAO udao = new UserInfoDAO(con);
             UserInfo user = new UserInfo("a"+Math.random(), "パスワード", "秘密の質問", "秘密の質問答え");
             udao.insert(user);
@@ -46,10 +48,34 @@ public class Main {
                 System.out.printf("%s %s %s %s\n",user.getId(), user.getName(), user.getSecretQuestion(), user.getSecretQuestionAnswer());
             }
 
-            //MCUserInfoのテスト
-            System.out.println(MCUserInfo.login("nabnab", "password"));
+            */
+            System.out.println(333);
+            System.out.println(MCUserInfo.login("aab", "aab"));
+            System.out.println(333);
 
+			UserInfoDAO userdao = new UserInfoDAO(con);
+            String birthyear = "1987";
+            String birthmonth = "10";
+            String birthday = "24";
+            String name = "nab";
+            String password = "password";
+            String birthdate = birthyear + "/" + birthmonth + "/" + birthday;
+			UserInfo user = new UserInfo(name, password, birthdate);
+			//user = userdao.insert(user);
+
+            //Update test
+            birthyear = "1900";
+            birthmonth = "12";
+            birthday = "1";
+            name = "ttt";
+            int id = 1;
+            password = "qq";
+            birthdate = birthyear + "/" + birthmonth  + "/" + birthday;
+            user = new UserInfo(name, password, birthdate);
+            userdao.updateById(1, user);
         } catch(SQLException e) {
+            e.printStackTrace();
+        } catch(ParseException e) {
             e.printStackTrace();
         } finally {
             try{

@@ -7,6 +7,7 @@ public class Topic implements Serializable {
     private String title;
     private String createdDate;
     private int userid;
+    private String username;
 
     public Topic() {}
 
@@ -21,6 +22,14 @@ public class Topic implements Serializable {
         this.createdDate = createdDate;
         this.userid = userid;
     }
+    public Topic(int id, String title, String createdDate, String username) {
+        this.id = id;
+        this.title = title;
+        this.createdDate = createdDate;
+        this.userid = -1;
+        this.username = username;
+    }
+
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -30,4 +39,6 @@ public class Topic implements Serializable {
     public void setCreatedDate() { this.createdDate = createdDate; }
     public int getUserid() { return userid; }
     public void setUserid() { this.userid = userid; }
+    public String getUsername() { return username; }
+    public void setUsername() { this.username = username; }
 }

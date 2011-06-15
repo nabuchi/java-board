@@ -26,11 +26,11 @@ public class TopicDAO {
 
 	public ArrayList<Topic> selectAll() throws SQLException {
 		ArrayList<Topic> list = new ArrayList<Topic>();
-		String sql = "select id, title, created_date, userid from topic";
+		String sql = "select topic.id, title, created_date, name from topic,userinfo where topic.userid = userinfo.id";
 		Statement stmt = con.createStatement();
 		ResultSet rset = stmt.executeQuery(sql);
 		while (rset.next()) {
-			Topic r = new Topic(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getInt(4));
+			Topic r = new Topic(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4));
 			list.add(r);
 		}
 		return list;

@@ -7,7 +7,6 @@
     <body>
         <h1>トピック作成</h1>
         <form action="app/TopicAddAction" method="post">
-            <p><input type="text" name="userid"></p>
             <p><input type="text" name="title"></p>
             <p><input type="submit" value="書き込み"></p>
         </form>

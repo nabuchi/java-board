@@ -19,10 +19,28 @@ public class BoardController extends HttpServlet {
             nextPage = ResAddController.perform(request, response);
         } else if( "/TopicAddAction".equals(path) ) {
             nextPage = TopicAddController.perform(request, response);
+            if(session.getAttribute("loggedIn") == null) {
+                request.setAttribute("error", "トピックはログインしないと作れません");
+                nextPage = "/WEB-INF/jsp/Error.jsp";
+            }
         } else if( "/MakeTopic".equals(path) ) {
             nextPage = "/WEB-INF/jsp/MakeTopic.jsp";
-        } else if( "/ModifyData".equals(path) ) {
+            if(session.getAttribute("loggedIn") == null) {
+                request.setAttribute("error", "トピックはログインしないと作れません");
+                nextPage = "/WEB-INF/jsp/Error.jsp";
+            }
+        } else if( "/UserModifyAction".equals(path) ) {
             nextPage = UserModifyController.perform(request, response);
+            if(session.getAttribute("loggedIn") == null) {
+                request.setAttribute("error", "ログインしてください");
+                nextPage = "/WEB-INF/jsp/Error.jsp";
+            }
+        } else if( "/ModifyForm".equals(path)) {
+            nextPage = "/WEB-INF/jsp/UpdateForm.jsp";
+            if(session.getAttribute("loggedIn") == null) {
+                request.setAttribute("error", "ログインしてください");
+                nextPage = "/WEB-INF/jsp/Error.jsp";
+            }
         } else if( "/ResListAction".equals(path) ) {
             nextPage = ResListController.perform(request, response);
         } else if("/LoginAction".equals(path)) {
