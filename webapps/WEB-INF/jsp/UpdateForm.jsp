@@ -11,7 +11,6 @@
             <p>名前：<input type="text" name="name" value="<%= session.getAttribute("user") %>"></p>
             <p>パスワード：<input type="password" name="password" ></p>
             <p>新しいパスワード：<input type="password" name="password" value=""></p>
-            <p>新しいパスワード(確認)：<input type="password" name="password_confirm" value=""></p>
 
             <p>生年月日：
             <select name="birthyear">
@@ -30,14 +29,22 @@
                 <%
                 for(int i=1;i<=12;i++) {
                 %>
+                <% if(i==((Calendar)session.getAttribute("birthday")).get(Calendar.MONTH)+1) { %>
+                <option value="<%= i %>" selected><%= i %></option>
+                <% } else { %>
                 <option value="<%= i %>"><%= i %></option>
+                <% } %>
                 <% } %>
             </select>
             <select name="birthday">
                 <%
                 for(int i=1;i<=31;i++) {
                 %>
+                <% if(i==((Calendar)session.getAttribute("birthday")).get(Calendar.DAY_OF_MONTH)) { %>
+                <option value="<%= i %>" selected><%= i %></option>
+                <% } else { %>
                 <option value="<%= i %>"><%= i %></option>
+                <% } %>
                 <% } %>
             </select>
             </p>

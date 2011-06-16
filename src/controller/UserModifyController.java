@@ -36,6 +36,8 @@ public class UserModifyController {
             birthmonth == null ||
             birthday == null) {
 			request.setAttribute("error", "入力が不正です"); 
+        } else if(name.equals("") || password.equals("")) {
+			request.setAttribute("error", "必要事項が入力されていません"); 
 		} else {
 			Connection con = null;
 			try {
@@ -44,9 +46,12 @@ public class UserModifyController {
                 String birthdate = birthyear + "/" + birthmonth  + "/" + birthday;
 			    UserInfo user = new UserInfo(name, password, birthdate);
                 userdao.updateById((Integer)session.getAttribute("id"), user);
+                session.setAttribute("user", user.getName());
+                session.setAttribute("birthday", user.getBirthday());
+                session.setAttribute("loggedIn", true);
                 nextPage = "/WEB-INF/jsp/toTop.jsp";
 			} catch (SQLException e) {
-				request.setAttribute("error", (Integer)(session.getAttribute("id")));
+				request.setAttribute("error", "同じユーザー名が登録されています");
 				e.printStackTrace();
             } catch (NumberFormatException e) {
 				request.setAttribute("error", "書き込みに失敗しました");

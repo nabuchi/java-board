@@ -21,7 +21,7 @@ public class LoginController{
 			session.setAttribute("loggedIn", true);
             nextPage = TopicListController.perform(request, response);
 		}else{
-			request.setAttribute("error", ""+userId+":"+password);
+			request.setAttribute("error", "ログインに失敗しました");
 		}
 		return nextPage;
 	}

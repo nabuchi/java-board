@@ -19,6 +19,7 @@
 	}
 %>
 </table>
+<a href="MainBoard">トップへ戻る</a>
 </div>
 </body>
 </html>

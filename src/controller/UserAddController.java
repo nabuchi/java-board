@@ -33,6 +33,8 @@ public class UserAddController {
             birthmonth == null ||
             birthday == null) {
 			request.setAttribute("error", "ちゃんとフォームから登録して下さい"); 
+        } else if( name.equals("") || password.equals("") ) {
+			request.setAttribute("error", "必要事項が入力されていません"); 
 		} else {
 			Connection con = null;
 			try {
@@ -48,7 +50,7 @@ public class UserAddController {
 					request.setAttribute("error", "追加に失敗しました");
 				}
 			} catch (SQLException e) {
-			    request.setAttribute("error", "SQLエラー");
+			    request.setAttribute("error", "同じユーザー名が既に登録されています");
 				e.printStackTrace();
             } catch (ParseException e) {
 			    request.setAttribute("error", "生年月日のパースエラー");

@@ -33,7 +33,7 @@
     while(iter.hasNext()) {
         Topic topic = (Topic)iter.next();
     %>
-    <p><a href="app/ResListAction?topicid=<%= topic.getId()%>"><%= topic.getTitle() %>:<%= topic.getCreatedDate() %></a><%=topic.getUserid()%></p>
+    <p><a href="app/ResListAction?topicid=<%= topic.getId()%>"><%= topic.getTitle() %>:<%= topic.getCreatedDate() %></a><%=topic.getUsername()%></p>
     <% } %>
 
     <%--
