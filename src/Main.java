@@ -73,6 +73,11 @@ public class Main {
             birthdate = birthyear + "/" + birthmonth  + "/" + birthday;
             user = new UserInfo(name, password, birthdate);
             userdao.updateById(1, user);
+
+            //ByNameBirth
+            UserInfo uu = new UserInfo("kkk", "ppp", "2000/1/1");
+            System.out.println(userdao.selectByNameBirth(uu));
+
         } catch(SQLException e) {
             e.printStackTrace();
         } catch(ParseException e) {

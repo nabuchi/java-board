@@ -12,4 +12,6 @@
             <p><input type="submit" value="書き込み"></p>
         </form>
     </body>
+    <a href="app/RepublishForm">パスワードを忘れた</a>
+    <a href="app/UserAddForm">新規登録</a>
 </html>

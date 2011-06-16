@@ -10,7 +10,7 @@
     <body>
         <h1>BBS</h1>
         <% if( session.getAttribute("loggedIn") != null ) { %>
-        <p>ようこそ<%= session.getAttribute("user") %> <%= session.getAttribute("id") %>さん</p>
+        <p>ようこそ<%= session.getAttribute("user") %>さん</p>
         <a href="app/MakeTopic">トピック作成</a>
         <a href="app/ModifyForm">会員情報変更</a>
         <a href="app/Logout">ログアウト</a>
@@ -28,13 +28,18 @@
     --%>
     <hr />
 
+    <table border="1">
+        <tr><th>トピック名</th><th>作成者</th><th>作成日</th></tr>
     <%
     Iterator<Topic> iter = topiclist.iterator();
     while(iter.hasNext()) {
         Topic topic = (Topic)iter.next();
     %>
-    <p><a href="app/ResListAction?topicid=<%= topic.getId()%>"><%= topic.getTitle() %>:<%= topic.getCreatedDate() %></a><%=topic.getUsername()%></p>
+    <tr>
+        <td><a href="app/ResListAction?topicid=<%= topic.getId()%>"><%= topic.getTitle() %></a></td><td><%=topic.getUsername()%></td><td><%= topic.getCreatedDate() %></td>
+    </tr>
     <% } %>
+    </table>
 
     <%--
     <% for(int i=0; i<mctopiclist.size(); i++){

@@ -55,6 +55,20 @@ public class UserInfoDAO {
         }
         return user;
     }
+    public UserInfo selectByNameBirth(UserInfo user) throws SQLException {
+        String sql = "select id, name, password, birthday from userinfo where name = ? and birthday = ?";
+        DateFormat dfm = DateFormat.getInstance();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1,user.getName());
+        ps.setString(2, dfm.format(user.getBirthday().getTime()));
+        ResultSet rset = ps.executeQuery();
+        if( rset.next() ) {
+            user = new UserInfo( rset.getInt(1), rset.getString(2), rset.getString(3), rset.getDate(4) );
+        } else {
+            user = null;
+        }
+        return user;
+    }
     public int updateById(int userId, UserInfo user) throws SQLException{
         String sql = "update userinfo set name=?,password=?,birthday=? where id = ?";
         DateFormat dfm = DateFormat.getInstance();

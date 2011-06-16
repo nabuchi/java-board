@@ -10,8 +10,8 @@
     <body>
         <h1>レス一覧</h1>
         <form action="app/ResAddAction" method="post">
-            <p><input type="text" name="author"></p>
-            <p><input type="text" name="content"></p>
+            <p>名前：<input type="text" name="author"></p>
+            <p><textarea name="content"></textarea></p>
             <p><input type="submit" value="書き込み"></p>
             <p><input type="hidden" name="topicid" value="<%= request.getParameter("topicid") %>"></p>
         </form>
@@ -24,7 +24,9 @@
             Res res = (Res)iter.next();
         %>
         
-        <p> <%= res.getAuthor() %> : <%= res.getContent() %> </p>
+        <p>名前:<%= res.getAuthor() %>  作成日:<%= res.getTime() %></p>
+        <p><%= res.getContent() %></p>
+        <hr />
 
         <% } %>
 

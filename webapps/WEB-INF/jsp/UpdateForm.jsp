@@ -9,8 +9,7 @@
         <h1>ユーザー情報変更</h1>
         <form action="app/UserModifyAction" method="post">
             <p>名前：<input type="text" name="name" value="<%= session.getAttribute("user") %>"></p>
-            <p>パスワード：<input type="password" name="password" ></p>
-            <p>新しいパスワード：<input type="password" name="password" value=""></p>
+            <p>新しいパスワード：<input type="password" name="password"></p>
 
             <p>生年月日：
             <select name="birthyear">

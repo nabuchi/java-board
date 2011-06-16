@@ -54,6 +54,10 @@ public class BoardController extends HttpServlet {
         } else if("/Logout".equals(path)) {
             session.setAttribute("loggedIn", null);
             nextPage = "/WEB-INF/jsp/Logout.jsp";
+        } else if("/RepublishForm".equals(path)) {
+            nextPage = "/WEB-INF/jsp/RepublishForm.jsp";
+        } else if("/RepublishAction".equals(path)) {
+            nextPage = RepublishController.perform(request, response);
         } else {
             request.setAttribute("error", "指定されたURLに誤りがあります");
             nextPage = "/WEB-INF/jsp/Error.jsp";
